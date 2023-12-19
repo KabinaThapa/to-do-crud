@@ -12,9 +12,23 @@ const render=()=>{
     const taskContainer=document.getElementById('tasks')
     taskContainer.innerHTML=''
     const tasksList=tasks.map(task=>{
-        const list=document.createElement('List')
+        const list=document.createElement('list')
+        list.className='list'
         list.textContent=task.title
         taskContainer.appendChild(list)
+
+        const editButton=document.createElement('edit')
+        editButton.className='edit'
+        editButton.type='button'
+        editButton.textContent='edit'
+        list.appendChild(editButton)
+        
+        const deleteButton=document.createElement('delete')
+        deleteButton.className='edit'
+        deleteButton.type='button'
+        deleteButton.textContent='delete'
+        list.appendChild(deleteButton)
+
     })
     console.log(tasksList)
    
