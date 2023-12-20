@@ -1,4 +1,4 @@
-const tasks=[
+let tasks=[
     {
         id:1,
         title:'Do Laundry',
@@ -27,10 +27,11 @@ const render=()=>{
         deleteButton.className='edit'
         deleteButton.type='button'
         deleteButton.textContent='delete'
+        deleteButton.addEventListener('click', ()=>deleteTasks(task.id))
         list.appendChild(deleteButton)
 
     })
-    console.log(tasksList)
+   
    
   
 
@@ -52,4 +53,10 @@ const addTasks=()=>{
    input.value=''
    console.log(tasks)
    render()
+}
+const deleteTasks=(id)=>{
+tasks=tasks.filter(task=>task.id!==id)
+render()
+console.log(tasks)
+
 }
