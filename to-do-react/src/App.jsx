@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const taskLists=[
+  const [taskLists, setTaskLists]=useState([
     {
       id:1,
       title:'do laundry',
@@ -14,7 +14,19 @@ function App() {
       title:'grocery',
       status:'completed'
     }
-  ]
+  ])
+  const addTasks=()=>{
+    const newTask={
+      id:taskLists.length +1,
+      title: 'title',
+      status:'pending'
+
+    }
+    taskLists.push(newTask)
+    console.log(taskLists)
+    setTaskLists((prevTaskLists)=>[...taskLists])
+
+  }
   
   
 
@@ -23,7 +35,7 @@ function App() {
     <>
       <div>
         <input type='text' placeholder='enter tasks'/>
-        <button>Add</button>
+        <button onClick={addTasks}>Add</button>
         <div>
           {taskLists.map((tasks)=>(
             <li>{tasks.title}</li>
