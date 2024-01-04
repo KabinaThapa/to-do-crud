@@ -25,7 +25,7 @@ function App() {
     }
     taskLists.push(newTask)
     console.log(taskLists)
-    setTaskLists((prevTaskLists)=>[...taskLists])
+    setTaskLists([...taskLists])
 
   }
 
@@ -33,7 +33,12 @@ function App() {
     setInput(event.target.value)
 
   }
-  
+  const handleDelete=(id)=>{
+   const afterDelete= taskLists.filter((lists)=>lists.id!=id)
+    setTaskLists(afterDelete)
+
+
+  }
   
 
 
@@ -44,7 +49,11 @@ function App() {
         <button onClick={addTasks}>Add</button>
         <div>
           {taskLists.map((tasks)=>(
-            <li>{tasks.title}</li>
+            <div>
+              <li>{tasks.title}</li>
+              <button onClick={()=>handleDelete(tasks.id)}>X</button>
+            </div>
+            
           ))}
         </div>
       </div>
